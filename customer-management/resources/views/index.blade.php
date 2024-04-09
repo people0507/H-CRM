@@ -506,6 +506,9 @@
             <th>STT</th>
             <th>Mã NV</th>
             <th>Tên Nhân Viên</th>
+            <th>Số Điện Thoại</th>
+            <th>Địa Chỉ</th>
+            <th>Tài Khoản</th>
             <th>Vai Trò</th>
             <th></th>
           </tr>
@@ -516,6 +519,9 @@
           <td data-label="ID">{{$loop->iteration}}</td>
             <td>{{$nv->id_nv}}</td>
             <td>{{$nv->ten_nv}}</td>
+            <td>{{$nv->sdt}}</td>
+            <td>{{$nv->dia_chi}}</td>
+            <td>{{$nv->tai_khoan}}</td>
             @if($nv->vai_tro == 1)
             <td>Quản Lý</td>
             @else
