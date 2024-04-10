@@ -284,7 +284,7 @@
     <span class="button bg-sky-400 --jb-modal" data-target="add-modal">Thêm Mới</span>
   </div>
 </section>
-
+@if(!$khachHang->isEmpty())
   <section class="section main-section">
     <div class="card has-table">
       <div class="card-content">
@@ -333,6 +333,9 @@
       </div>
     </div>
   </section>
+  @else
+  <div class="m-20 text-center font-bold text-lg">Không có dữ liệu của khách hàng chăm sóc</div>
+@endif
   @endif
 
   @if(isset($mode) && $mode == 2)
@@ -343,7 +346,7 @@
     </h1>
   </div>
 </section>
-
+@if(!$hopDong->isEmpty())
 <section class="section main-section">
     <div class="card has-table">
       <div class="card-content">
@@ -384,6 +387,9 @@
       </div>
     </div>
   </section>
+  @else
+  <div class="m-20 text-center font-bold text-lg">Không có dữ liệu của hợp đồng</div>
+@endif
 @endif
 
 @if(isset($mode) && $mode == 3)
@@ -395,6 +401,7 @@
   </div>
 </section>
 
+@if(!$khachHang->isEmpty())
 <section class="section main-section">
     <div class="card has-table">
       <div class="card-content">
@@ -485,6 +492,9 @@
       </div>
     </div>
   </section>
+@else
+  <div class="m-20 text-center font-bold text-lg">Không có dữ liệu của khách hàng dịch vụ</div>
+@endif
 @endif
 
 @if(isset($mode) && $mode == 4)
