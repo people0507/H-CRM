@@ -175,14 +175,15 @@
   </div>
   <div class="menu is-menu-main">
     <ul class="menu-list">
-    <li>
+    @if(isset($mode) && $mode == 1)
+    <li class="active">
         <a class="dropdown">
           <span class="icon"><i class="mdi mdi-view-list"></i></span>
           <span class="menu-item-label">Quản Lý KH</span>
           <span class="icon"><i class="mdi mdi-plus"></i></span>
         </a>
         <ul class="menu-list">
-          <li>
+          <li class="active">
             <a href="{{route('khach_hang')}}">
               <span>Khách Hàng Chăm Sóc</span>
             </a>
@@ -194,6 +195,52 @@
           </li>
         </ul>
       </li>
+    @endif
+
+    @if(isset($mode) && $mode == 3)
+    <li class="active">
+        <a class="dropdown">
+          <span class="icon"><i class="mdi mdi-view-list"></i></span>
+          <span class="menu-item-label">Quản Lý KH</span>
+          <span class="icon"><i class="mdi mdi-plus"></i></span>
+        </a>
+        <ul class="menu-list">
+          <li >
+            <a href="{{route('khach_hang')}}">
+              <span>Khách Hàng Chăm Sóc</span>
+            </a>
+          </li>
+          <li class="active" >
+            <a href="{{route('khach_hang_dv')}}">
+              <span>Khách Hàng Dịch Vụ</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    @endif
+
+    @if((isset($mode) && $mode == 2) || isset($mode) && $mode == 4)
+    <li>
+        <a class="dropdown">
+          <span class="icon"><i class="mdi mdi-view-list"></i></span>
+          <span class="menu-item-label">Quản Lý KH</span>
+          <span class="icon"><i class="mdi mdi-plus"></i></span>
+        </a>
+        <ul class="menu-list">
+          <li >
+            <a href="{{route('khach_hang')}}">
+              <span>Khách Hàng Chăm Sóc</span>
+            </a>
+          </li>
+          <li >
+            <a href="{{route('khach_hang_dv')}}">
+              <span>Khách Hàng Dịch Vụ</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    @endif
+
     @if(isset($mode) && $mode == 2)
       <li class="active">
         <a href="{{route('hop_dong')}}">
