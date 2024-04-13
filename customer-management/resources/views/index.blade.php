@@ -180,7 +180,7 @@
         <a class="dropdown">
           <span class="icon"><i class="mdi mdi-view-list"></i></span>
           <span class="menu-item-label">Quản Lý KH</span>
-          <span class="icon"><i class="mdi mdi-plus"></i></span>
+          <span class="icon"><i class="mdi mdi-minus"></i></span>
         </a>
         <ul class="menu-list">
           <li class="active">
@@ -202,7 +202,7 @@
         <a class="dropdown">
           <span class="icon"><i class="mdi mdi-view-list"></i></span>
           <span class="menu-item-label">Quản Lý KH</span>
-          <span class="icon"><i class="mdi mdi-plus"></i></span>
+          <span class="icon"><i class="mdi mdi-minus"></i></span>
         </a>
         <ul class="menu-list">
           <li >
