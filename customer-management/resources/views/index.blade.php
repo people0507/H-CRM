@@ -611,7 +611,7 @@
         <section class="modal-card-body">
         <div>
         <div class="flex my-3">
-        <span class="flex-1 w-64 font-bold">Tên :</span>
+        <span class="flex-1 w-64 font-bold">Tên <span class="text-red-700">*</span> :</span>
         <input type="text" placeholder="Nhập" name="ten_nv" class="input flex-auto w-64 bg-gray-100 rounded-lg" value ="{{$nv->ten_nv}}" required>
         </div>
         <div class="flex my-3">
@@ -631,7 +631,7 @@
         <input type="text" placeholder="Nhập" name="mat_khau" class="input flex-auto w-64 bg-gray-100 rounded-lg" value="{{$nv->mat_khau}}" required>
       </div>
         <div class="flex my-3">
-        <span class="flex-1 w-64 font-bold">Vai Trò :</span>
+        <span class="flex-1 w-64 font-bold">Vai Trò <span class="text-red-700">*</span> :</span>
         <select name="vai_tro" class="input flex-auto w-64 bg-gray-100 rounded-lg">
             <option value="0" {{ $nv->vai_tro == '0' ? 'selected' : '' }} >Quản Lý</option>
             <option value="1" {{ $nv->vai_tro == '1' ? 'selected' : '' }} >Nhân Viên</option>
@@ -914,7 +914,7 @@
         <span class="flex-1 w-64 font-bold">Địa chỉ :</span><span class="flex-1 w-64">{{$kh->dia_chi}}</span>
       </div>
       <div class="flex my-3">
-        <span class="flex-1 w-64 font-bold">Ngày Sinh :</span><span class="flex-1 w-64">{{$kh->ngay_sinh_kh}}</span>
+        <span class="flex-1 w-64 font-bold">Ngày Sinh :</span><span class="flex-1 w-64">{{date('d-m-Y', strtotime($kh->ngay_sinh_kh))}}</span>
       </div>
       <div class="flex my-3">
         <span class="flex-1 w-64 font-bold">Email :</span><span class="flex-1 w-64">{{$kh->email}}</span>
@@ -933,7 +933,7 @@
         <span class="flex-1 w-64 font-bold">Ngành Nghề :</span><span class="flex-1 w-64">{{$kh->nganh_nghe}}</span>
       </div>
       <div class="flex my-3">
-        <span class="flex-1 w-64 font-bold">Ngày Tạo :</span><span class="flex-1 w-64">{{$kh->created_at}}</span>
+        <span class="flex-1 w-64 font-bold">Ngày Tạo :</span><span class="flex-1 w-64">{{date('d-m-Y', strtotime($kh->created_at))}}</span>
       </div>
 </div>
     </section>
