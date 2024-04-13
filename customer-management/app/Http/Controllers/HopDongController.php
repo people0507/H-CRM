@@ -83,10 +83,11 @@ class HopDongController extends Controller
 
     public function show($id)
     {
+        $tenKhachHang = Client::where('id_kh',$id)->first();
         $hopDong = Contract::where('id_kh_fk',$id)->paginate(10);
         $lienKet = asset('contracts');
         $mode = 2;
-        return view('index',compact('hopDong','mode','lienKet'));
+        return view('index',compact('hopDong','mode','lienKet','tenKhachHang'));
     }
 
 

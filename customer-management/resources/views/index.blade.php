@@ -245,14 +245,14 @@
       <li class="active">
         <a href="{{route('hop_dong')}}">
           <span class="icon"><i class="mdi mdi-table"></i></span>
-          <span class="menu-item-label">Hợp Đồng</span>
+          <span class="menu-item-label">Quản Lý Hợp Đồng</span>
         </a>
       </li>
     @else
     <li class="--set-active-tables-html">
         <a href="{{route('hop_dong')}}">
           <span class="icon"><i class="mdi mdi-table"></i></span>
-          <span class="menu-item-label">Hợp Đồng</span>
+          <span class="menu-item-label">Quản Lý Hợp Đồng</span>
         </a>
       </li>
     @endif
@@ -260,14 +260,14 @@
       <li class="active">
         <a href="{{route('nhan_vien')}}">
           <span class="icon"><i class="mdi mdi-account"></i></span>
-          <span class="menu-item-label">Người Dùng</span>
+          <span class="menu-item-label">Quản Lý Người Dùng</span>
         </a>
       </li>
     @else
       <li class="--set-active-forms-html">
           <a href="{{route('nhan_vien')}}">
             <span class="icon"><i class="mdi mdi-account"></i></span>
-            <span class="menu-item-label">Người Dùng</span>
+            <span class="menu-item-label">Quản Lý Người Dùng</span>
           </a>
       </li>
     @endif
@@ -391,9 +391,16 @@
   @if(isset($mode) && $mode == 2)
 <section class="is-hero-bar">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
+    
+    @if(isset($tenKhachHang))
     <h1 class="title">
-    Hợp Đồng
+    Hợp Đồng Của Khách Hàng : {{$tenKhachHang->ten_kh}}
     </h1>
+    @else
+    <h1 class="title">
+    Danh Sách Hợp Đồng
+    </h1>
+    @endif
   </div>
 </section>
 @if(!$hopDong->isEmpty())
@@ -551,7 +558,7 @@
 <section class="is-hero-bar">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <h1 class="title">
-    Người Dùng
+    Danh Sách Người Dùng
     </h1>
     <span class="button bg-sky-400 --jb-modal " data-target="add-user-modal">Thêm Mới</span>
   </div>
@@ -564,7 +571,6 @@
           <thead>
           <tr>
             <th>STT</th>
-            <th>Mã ND</th>
             <th>Tên Người Dùng</th>
             <th>Số Điện Thoại</th>
             <th>Địa Chỉ</th>
@@ -576,8 +582,7 @@
           <tbody>
             @foreach($nhanVien as $nv) 
           <tr>
-          <td data-label="ID">{{$loop->iteration}}</td>
-            <td>{{$nv->id_nv}}</td>
+            <td data-label="ID">{{$loop->iteration}}</td>
             <td>{{$nv->ten_nv}}</td>
             <td>{{$nv->sdt}}</td>
             <td>{{$nv->dia_chi}}</td>
@@ -935,7 +940,7 @@
       <div class="flex my-3">
         <span class="flex-1 w-64 font-bold">Ngày Tạo :</span><span class="flex-1 w-64">{{date('d-m-Y', strtotime($kh->created_at))}}</span>
       </div>
-</div>
+  </div>
     </section>
     <footer class="text-right">
       <button class="button --jb-modal-close my-3 bg-gray-300">Đóng</button>
