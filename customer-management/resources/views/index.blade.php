@@ -260,14 +260,14 @@
       <li class="active">
         <a href="{{route('nhan_vien')}}">
           <span class="icon"><i class="mdi mdi-account"></i></span>
-          <span class="menu-item-label">Nhân Viên</span>
+          <span class="menu-item-label">Người Dùng</span>
         </a>
       </li>
     @else
       <li class="--set-active-forms-html">
           <a href="{{route('nhan_vien')}}">
             <span class="icon"><i class="mdi mdi-account"></i></span>
-            <span class="menu-item-label">Nhân Viên</span>
+            <span class="menu-item-label">Người Dùng</span>
           </a>
       </li>
     @endif
@@ -295,7 +295,7 @@
       <li>Khách Hàng Dịch Vụ</li>
       @endif
       @if(isset($mode) && $mode == 4)
-      <li>Nhân Viên</li>
+      <li>Người Dùng</li>
       @endif
     </ul>
     <div class="flex">
@@ -403,7 +403,7 @@
             <th>STT</th>
             <th>Tên Hợp Đồng</th>
             <th>Khách Hàng</th>
-            <th>Nhân Viên</th>
+            <th>Người Dùng</th>
             <th>DVSD</th>
             <th>Ngày Ký</th>
             <th>Ngày Hiệu Lực</th>
@@ -548,7 +548,7 @@
 <section class="is-hero-bar">
   <div class="flex flex-col md:flex-row items-center justify-between space-y-6 md:space-y-0">
     <h1 class="title">
-    Nhân Viên
+    Người Dùng
     </h1>
     <span class="button bg-sky-400 --jb-modal " data-target="add-user-modal">Thêm Mới</span>
   </div>
@@ -561,8 +561,8 @@
           <thead>
           <tr>
             <th>STT</th>
-            <th>Mã NV</th>
-            <th>Tên Nhân Viên</th>
+            <th>Mã ND</th>
+            <th>Tên Người Dùng</th>
             <th>Số Điện Thoại</th>
             <th>Địa Chỉ</th>
             <th>Tài Khoản</th>
@@ -579,10 +579,10 @@
             <td>{{$nv->sdt}}</td>
             <td>{{$nv->dia_chi}}</td>
             <td>{{$nv->tai_khoan}}</td>
-            @if($nv->vai_tro == 1)
+            @if($nv->vai_tro == 0)
             <td>Quản Lý</td>
             @else
-            <td>Nhân Viên</td>
+            <td>Người Dùng</td>
             @endif
 
             <td class="actions-cell">
@@ -601,7 +601,7 @@
         <div class="modal-background --jb-modal-close"></div>
         <div class="modal-card">
         <header class="modal-card-head">
-          <p class="modal-card-title font-bold">Sửa Thông Tin Nhân Viên</p>
+          <p class="modal-card-title font-bold">Sửa Thông Tin Người Dùng</p>
         </header>
         <form method="POST" action="{{ route('sua_nhan_vien', ['id' => $nv->id_nv]) }}">
           @csrf
@@ -612,10 +612,26 @@
         <input type="text" placeholder="Nhập" name="ten_nv" class="input flex-auto w-64 bg-gray-100 rounded-lg" value ="{{$nv->ten_nv}}" required>
         </div>
         <div class="flex my-3">
-        <span class="flex-1 w-64 font-bold">Giới tính :</span>
+        <span class="flex-1 w-64 font-bold">Số Điện Thoại <span class="text-red-700">*</span> :</span>
+        <input type="text" placeholder="Nhập" name="sdt" class="input flex-auto w-64 bg-gray-100 rounded-lg" value="{{$nv->sdt}}" required>
+      </div>
+      <div class="flex my-3">
+        <span class="flex-1 w-64 font-bold">Địa Chỉ <span class="text-red-700">*</span> :</span>
+        <input type="text" placeholder="Nhập" name="dia_chi" class="input flex-auto w-64 bg-gray-100 rounded-lg" value="{{$nv->dia_chi}}" required>
+      </div>
+      <div class="flex my-3">
+        <span class="flex-1 w-64 font-bold">Tài Khoản<span class="text-red-700">*</span> :</span>
+        <input type="text" placeholder="Nhập" name="tai_khoan" class="input flex-auto w-64 bg-gray-100 rounded-lg" value="{{$nv->tai_khoan}}" required>
+      </div>
+      <div class="flex my-3">
+        <span class="flex-1 w-64 font-bold">Mật Khẩu <span class="text-red-700">*</span> :</span>
+        <input type="text" placeholder="Nhập" name="mat_khau" class="input flex-auto w-64 bg-gray-100 rounded-lg" value="{{$nv->mat_khau}}" required>
+      </div>
+        <div class="flex my-3">
+        <span class="flex-1 w-64 font-bold">Vai Trò :</span>
         <select name="vai_tro" class="input flex-auto w-64 bg-gray-100 rounded-lg">
-            <option value="0" {{ $nv->gioi_tinh == '0' ? 'selected' : '' }} >Quản Lý</option>
-            <option value="1" {{ $nv->gioi_tinh == '1' ? 'selected' : '' }} >Nhân Viên</option>
+            <option value="0" {{ $nv->vai_tro == '0' ? 'selected' : '' }} >Quản Lý</option>
+            <option value="1" {{ $nv->vai_tro == '1' ? 'selected' : '' }} >Người Dùng</option>
         </select>
       </div>
       </div>
@@ -636,7 +652,7 @@
       <p class="modal-card-title">Thông Báo</p>
     </header>
     <section class="modal-card-body">
-      <p>Bạn có chắc chắn muốn xóa nhân viên <b>{{$nv->ten_nv}}</b> ?</p>
+      <p>Bạn có chắc chắn muốn xóa người dùng <b>{{$nv->ten_nv}}</b> ?</p>
     </section>
     <footer class="text-right">
     <form action="{{ route('xoa_nhan_vien', ['id' => $nv->id_nv]) }}" method="GET">
@@ -665,7 +681,7 @@
   <div class="modal-background --jb-modal-close"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title font-bold">Thêm Mới Thông Tin Nhân Viên</p>
+      <p class="modal-card-title font-bold">Thêm Mới Thông Tin Người Dùng</p>
     </header>
     <form method="POST" action="{{ route('them_nhan_vien') }}">
       @csrf
@@ -676,10 +692,26 @@
         <input type="text" placeholder="Nhập" name="ten_nv" class="input flex-auto w-64 bg-gray-100 rounded-lg" required>
       </div>
       <div class="flex my-3">
+        <span class="flex-1 w-64 font-bold">Số Điện Thoại <span class="text-red-700">*</span> :</span>
+        <input type="text" placeholder="Nhập" name="sdt" class="input flex-auto w-64 bg-gray-100 rounded-lg" required>
+      </div>
+      <div class="flex my-3">
+        <span class="flex-1 w-64 font-bold">Địa Chỉ <span class="text-red-700">*</span> :</span>
+        <input type="text" placeholder="Nhập" name="dia_chi" class="input flex-auto w-64 bg-gray-100 rounded-lg" required>
+      </div>
+      <div class="flex my-3">
+        <span class="flex-1 w-64 font-bold">Tài Khoản<span class="text-red-700">*</span> :</span>
+        <input type="text" placeholder="Nhập" name="tai_khoan" class="input flex-auto w-64 bg-gray-100 rounded-lg" required>
+      </div>
+      <div class="flex my-3">
+        <span class="flex-1 w-64 font-bold">Mật Khẩu <span class="text-red-700">*</span> :</span>
+        <input type="text" placeholder="Nhập" name="mat_khau" class="input flex-auto w-64 bg-gray-100 rounded-lg" required>
+      </div>
+      <div class="flex my-3">
         <span class="flex-1 w-64 font-bold">Vai Trò <span class="text-red-700">*</span> :</span>
         <select name="vai_tro" class="input flex-auto w-64 bg-gray-100 rounded-lg">
             <option value="0">Quản Lý</option>
-            <option value="1">Nhân Viên</option>
+            <option value="1">Người Dùng</option>
         </select>
       </div>
   </div>

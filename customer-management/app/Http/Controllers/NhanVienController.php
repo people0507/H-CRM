@@ -27,6 +27,10 @@ class NhanVienController extends Controller
         $duLieuNhanVien = $request->all();
         $nhanVien = new User();
         $nhanVien -> ten_nv = $duLieuNhanVien['ten_nv'];
+        $nhanVien -> sdt = $duLieuNhanVien['sdt'];
+        $nhanVien -> dia_chi = $duLieuNhanVien['dia_chi'];
+        $nhanVien -> tai_khoan = $duLieuNhanVien['tai_khoan'];
+        $nhanVien -> mat_khau = $duLieuNhanVien['mat_khau'];
         $nhanVien -> vai_tro = $duLieuNhanVien['vai_tro'];
         $nhanVien -> save();
         if ($nhanVien->save()) {
@@ -48,6 +52,10 @@ class NhanVienController extends Controller
         $duLieuNhanVien = $request->all();
         $nhanVien = User::where('id_nv',$id)->first();
         $nhanVien->ten_nv = $duLieuNhanVien['ten_nv'];
+        $nhanVien -> sdt = $duLieuNhanVien['sdt'];
+        $nhanVien -> dia_chi = $duLieuNhanVien['dia_chi'];
+        $nhanVien -> tai_khoan = $duLieuNhanVien['tai_khoan'];
+        $nhanVien -> mat_khau = $duLieuNhanVien['mat_khau'];
         $nhanVien->vai_tro = $duLieuNhanVien['vai_tro'];
         $nhanVien->save();
         if ($nhanVien->save()) {
