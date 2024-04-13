@@ -328,7 +328,10 @@
     <h1 class="title">
     Khách Hàng Chăm Sóc
     </h1>
-    <span class="button bg-sky-400 --jb-modal" data-target="add-modal">Thêm Mới</span>
+    <div class="flex flex-row">
+      <input class="mx-8 button bg-green-400 basis-1/4" type="button" value="Import">
+      <span class="button bg-sky-400 --jb-modal basis-1/4" data-target="add-modal">Thêm Mới</span>
+    </div>
   </div>
 </section>
 @if(!$khachHang->isEmpty())
@@ -582,7 +585,7 @@
             @if($nv->vai_tro == 0)
             <td>Quản Lý</td>
             @else
-            <td>Người Dùng</td>
+            <td>Nhân Viên</td>
             @endif
 
             <td class="actions-cell">
@@ -631,7 +634,7 @@
         <span class="flex-1 w-64 font-bold">Vai Trò :</span>
         <select name="vai_tro" class="input flex-auto w-64 bg-gray-100 rounded-lg">
             <option value="0" {{ $nv->vai_tro == '0' ? 'selected' : '' }} >Quản Lý</option>
-            <option value="1" {{ $nv->vai_tro == '1' ? 'selected' : '' }} >Người Dùng</option>
+            <option value="1" {{ $nv->vai_tro == '1' ? 'selected' : '' }} >Nhân Viên</option>
         </select>
       </div>
       </div>
@@ -711,7 +714,7 @@
         <span class="flex-1 w-64 font-bold">Vai Trò <span class="text-red-700">*</span> :</span>
         <select name="vai_tro" class="input flex-auto w-64 bg-gray-100 rounded-lg">
             <option value="0">Quản Lý</option>
-            <option value="1">Người Dùng</option>
+            <option value="1">Nhân Viên</option>
         </select>
       </div>
   </div>
